@@ -25,7 +25,7 @@
 
 - use case
 
-![intel_main_project.drawio.png](intel_main_project.drawio.png)
+![intel_main_project.drawio.png](images/hld_1.png)
 
 - sequence diagram
     
