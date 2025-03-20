@@ -43,7 +43,6 @@ git clone https://github.com/jo5862/intel03_team3_foot.git
 
 ## Prerequite
 
----
 
 - requirements.txt를 이용해 환경 설치
 
