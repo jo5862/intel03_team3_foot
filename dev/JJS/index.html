@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediClean</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .navbar {
+            background-color: lightblue;
+            padding: 15px;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .left-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .left-section div {
+            margin-right: 20px;
+        }
+
+        .navbar .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .buttons img {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+        }
+
+        .navbar .buttons img:hover {
+            opacity: 0.5;
+        }
+
+        .navbar .language-select {
+            margin-left: 1px;
+        }
+
+        select {
+            padding: 4px 8px;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            height: 25px;
+            line-height: 15px;
+        }
+
+        /* Grid 컨테이너 스타일 */
+        #container {
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr; /* 첫 번째 컬럼: 300px, 나머지: 동일 비율 */
+            height: calc(100% - 60px); /* 네비게이션 바 높이(60px) 제외 */
+        }
+
+        #container > div:nth-child(2) { /* 두 번째 칼럼 */
+            border-right: 1px solid black; /* 오른쪽에 검은색 1px 실선 추가 */      
+        }        
+        
+        #input-area {
+            padding: 10px;
+            background-color: #e6e6fa; 
+        }
+
+        #output-area {
+            padding: 10px;
+            text-align: center; /* 내용 중앙 정렬 */
+        }
+
+        #pandas-output h3 { /* h3 태그 중앙 정렬 */
+            text-align: center;
+        }
+
+
+        #pandas-output table { /* 테이블 크기 조정 */
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin: 0 auto; /* 테이블 자체를 가로로 중앙 정렬 */
+            max-height: 100%; /* 테이블 최대 높이를 영역에 맞춤 */
+            font-size: 0.7em; /* 글꼴 크기를 줄임 */
+        }
+
+        #pandas-output th,
+        #pandas-output td {
+            border: 1px solid #ddd; /* 셀 테두리 추가 */
+            padding: 5px;
+            text-align: left;
+            word-break: break-all; /* 긴 단어 줄바꿈 */
+        }
+
+        #image-area {
+            padding: 10px;
+            text-align: center; /* 이미지를 가운데 정렬 */
+        }
+
+        #image-area img {
+            max-width: 80%; /* 이미지 최대 너비를 영역에 맞춤 */
+            max-height: 80%; /* 이미지 최대 높이를 영역에 맞춤 */
+            display: block; /* 이미지를 블록 요소로 만들어 가운데 정렬이 가능하도록 함 */
+            margin: 0 auto; /* 이미지를 가로로 가운데 정렬 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="left-section">
+            <div>MediClean</div>
+            <div class="language-select">
+                <select>
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+        </div>
+        <div class="buttons">
+            <img src="https://cdn-icons-png.flaticon.com/512/4430/4430049.png" alt="Add" title="저장" onclick="alert('저장 버튼 클릭!')">
+            <img src="https://cdn-icons-png.flaticon.com/512/8577/8577783.png" alt="Load" title="불러오기" onclick="alert('불러오기 버튼 클릭!')">
+            <img src="https://cdn-icons-png.flaticon.com/512/3171/3171061.png" alt="Settings" title="설정" onclick="alert('설정 버튼 클릭!')">
+            <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt="Profile" title="내 정보" onclick="alert('내 정보 버튼 클릭!')">
+        </div>        
+    </div>
+
+
+    <div id="container">
+        <div id="input-area">
+            <h3>입력</h3>
+            <label for="name">이름:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label for="date">날짜:</label><br>
+            <input type="date" id="date" name="date"><br><br>
+
+            <div id="page-message"></div>
+            <h3>Data Source</h3>
+            <input type="text" id="txt-url" class="py-input" size="30" /><br><br>
+
+            <button
+                type="submit"
+                id="btn-load"
+                class="py-button"
+                py-click="loadFromURL"
+            >
+                Load CSV
+            </button>
+        </div>
+
+        <div id="pandas-output" >
+            <h3>Output</h3>
+            <div id="pandas-output-inner"></div>
+        </div>
+
+        <div id="image-area">
+            <h3>Image</h3>
+            <img id="my-image" src="" alt="이미지" />
+        </div>
+    </div>
+    
+    <section class="py-script">
+        <script type="py" src="./pyscript.py" config="./pyscript.toml"></script>
+    </section>
+</body>
+</html>
+    
+    
