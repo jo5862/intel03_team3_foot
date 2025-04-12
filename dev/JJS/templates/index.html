@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediClean</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+</head>
+<body>
+    <!-- 사이드바 -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/8766/8766075.png" alt="프로필 이미지">
+        </div>
+        <ul>
+        <br><br><br><br><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/12959/12959231.png" alt="Dash board"> Dashboard</a></li><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/4465/4465512.png" alt="Patients"> Patients</a></li><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/11287/11287355.png" alt="Calender"> Calender</a></li><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/16415/16415684.png" alt="Requests"> Requests</a></li><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Message"> Message</a></li></li><br><br><br><br><br><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3594/3594724.png" alt="Settings"> Setting</a></li><br>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" alt="Logout"> Logout</a></li><br>
+        </ul>
+    </div>
+
+
+
+    <div class="navbar">
+        <div class="left-section">
+            <div>MediClean</div>
+            <div class="language-select">
+                <select>
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+        </div>
+      
+    </div>
+    <br />
+    <div class="content">
+
+        <div class="content-left">
+            <br>        
+            <label for="file-input" class="load-data-button">Load Data</label>
+            <input type="file" id="file-input" accept=".csv" style="display: none;">
+
+            <div class="general-info-box">
+                <h3>General Info</h3>
+                <p>Name: <span id="name"></span></p>
+                <p>Sex: <span id="sex"></span></p>
+                <p>Birth: <span id="birth"></span></p>
+                <p>Location: <span id="location"></span></p>
+                <p>Id: <span id="id"></span></p>
+            </div>
+        
+            <div class="disorders-box">
+                <h3>Disorders</h3>
+                <p>Physical: <span id="physical"></span></p>
+                <p>Speech: <span id="speech"></span></p>
+                <p>Cognitive: <span id="cognitive"></span></p>
+            </div>
+        
+            <div class="Record-box">
+                <h3>Medical Record</h3>
+                <button id="show-record-button" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 50%; background-color: #ddd; border: none; cursor: pointer;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="Show Medical Record" style="width: 24px; height: 24px;">
+                </button>
+            </div>
+
+            <div id="record-popup" class="popup">
+                <div class="popup-content">
+                    <span class="close-button">×</span>
+                    <h2>Medical Record</h2>
+                    <p>This is the medical record content.</p>
+                </div>
+    </div>
+            
+        </div>
+        <div class="content-right">
+                <div class="right-header">
+                    <button class="load-model-button" onclick="start_animation_js()">Load Model</button>
+                    <input type="file" id="csvFile"name="csv_file" accept=".csv">
+                    <button id="splitCsvButton" onclick="runSplitPy()" disabled>Split CSV</button>
+    
+                    <button id="showGraphButton" onclick="processCSV()" disabled>Show Graph</button>
+                    <div id="output"></div>
+    
+                    <span class="loading-text">Loading...</span>
+                </div>
+
+                <div class="grid-container">
+                    <div class="grid-item image-container">
+                        <h3>Heat Map</h3>
+                        <div id="image-area">
+                            <img id="animated-image" src="{{ url_for('static', filename='img/image.png') }}" alt="Animated Image">
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <h3>COP Graph</h3>
+                        <div id="image-area">
+                            <canvas id="copChart"></canvas>
+                            <!--img id="animated-image" src="./img/Figure_7.png" alt="Animated image" -->
+                        </div>
+                    </div>
+                    <div class="grid-item"></div>
+                    <div class="grid-item control-container">   
+                        <div class="control-left">
+                            <h3>Control</h3>
+                            <div class="image-sequence-container">
+                                <input type="range" id="frame-slider" min="1" max="12" value="1">
+                                <span id="current-frame">01</span> / <span id="total-frames">12</span><br>
+                                <div class="controls">
+                                    <button id="slower-button">≪</button>  <!-- 2배 저속 버튼 추가 -->
+                                    <button id="play-pause-button">▶</button>
+                                    <button id="faster-button">≫</button>   <!-- 2배 고속 버튼 추가 --> 
+                                    <button id="reverse-button">◀</button>                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-right">
+                            <h3>Choose Cycle</h3>
+                            <div class="directory-buttons">
+                                <button id="dir1-button" data-dir="./img/Cycle_1/">Cycle 1</button><br>
+                                <button id="dir2-button" data-dir="./img/Cycle_2/">Cycle 2</button><br>
+                                <button id="dir3-button" data-dir="./img/Cycle_3/">Cycle 3</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <h3>Memo</h3>
+                        <textarea></textarea>
+                    </div>
+                    <div class="grid-item"></div>
+                </div>
+        </div>
+    </div>
+
+</body>
+</html>
+    
+    
