@@ -1,0 +1,4 @@
+Name,Sex,Birth,Location,Id,Physical,Speech,Cognitive,VisitDate,Diagnosis,Treatment
+박춘자,Female,1989-03-11,경기도 파주시,3260-8903112,Dysorhtria,Dementia,Arthritis,2016-07-07,3 진단서,진단서
+,,,,,,,,2016-07-06,요통 NOS,척추의 여러 부위
+,,,,,,,,2016-07-06,요통 NOS,경혈이체
