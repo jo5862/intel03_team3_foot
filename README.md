@@ -9,14 +9,15 @@ heatmap,matplot, CNN-LSTM을 이용한 보행 정상 범위 확률 데이터를 
     - **CNN-LSTM** 아키텍처를 활용하여 시공간적 보행 패턴 분석
     - **동적 족저압 데이터를 분석**하고 **보행 이상 검출하는 딥러닝 모델 개발.**
 ## ⏲️ 개발 기간
-    ![image_01](images/schedule.png)
-    ![use_case](images/hld_1.png)
+
+![image_01](images/schedule.png)
+
 ## 🧑‍🤝‍🧑 개발자 소개
-    ![image_01](images/team_member.png)
+![image_01](images/team_member.png)
 ## 📌 주요 기능
     - 걸음걸이 6단계를 구분한 14개의 압력센서 기기 2개를 이용해 왼발,오른발의  무게값을 히트맵화하여 무게중심(COP)점을 확인 및 관련 데이터 이동 궤적을 학습시켜 환자의 정상 유무를 판별.
     
-    ![image_02](images/outline_2.png)
+![image_02](images/outline_2.png)
     
     - 웹  UI에서 환자 이름,날짜를 입력해 환자 정보를 특정하고, 측정을 진행할 기기 연결 유/무 버튼을 통해 기기 연결을 확인하고, 측정 시작 및 중지 버튼을 통해 측정 관리를 수행.
     - 학습 데이터와 환자 데이터를 비교하여 환자의 보행 이상 정도와 데이터를 안내해주는 메세지 안내.
