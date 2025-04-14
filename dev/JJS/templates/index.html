@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MediClean</title>
-
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- 사이드바 -->
@@ -82,26 +83,34 @@
                     <h2>Medical Record</h2>
                     <p>This is the medical record content.</p>
                 </div>
-    </div>
+            </div>
             
         </div>
+        
         <div class="content-right">
                 <div class="right-header">
                     <button class="load-model-button" onclick="start_animation_js()">Load Model</button>
-                    <input type="file" id="csvFile"name="csv_file" accept=".csv">
+                    <input type="file" id="csvFile" accept=".csv">
+    
+                    <input type="hidden" id="selectedCsvPath" value="">
                     <button id="splitCsvButton" onclick="runSplitPy()" disabled>Split CSV</button>
     
                     <button id="showGraphButton" onclick="processCSV()" disabled>Show Graph</button>
-                    <div id="output"></div>
-    
-                    <span class="loading-text">Loading...</span>
+                    <button id="SplitCsv" onclick="callPythonFunction('SplitCsv')">Split_csv</button>
+                    <button id="Raw_Graph" onclick="callPythonFunction('Raw_Graph')">Raw_graph</button>
+                    <button id="Sprite_Graph" onclick="callPythonFunction('Sprite_Graph')">Sprite_Graph</button>
+                    <button id="button4" onclick="callPythonFunction('function4')">Button 4</button>
+                    <button id="button5" onclick="callPythonFunction('function5')">Button 5</button>
+                    <div id="output">
+                    </div>
+
                 </div>
 
                 <div class="grid-container">
                     <div class="grid-item image-container">
                         <h3>Heat Map</h3>
                         <div id="image-area">
-                            <img id="animated-image" src="{{ url_for('static', filename='img/image.png') }}" alt="Animated Image">
+                            <img id="animated-image" src="" alt="Animated image">
                         </div>
                     </div>
                     <div class="grid-item">
@@ -144,6 +153,9 @@
         </div>
     </div>
 
+    <section class="py-script">
+        <script type="py" src="./pyscript.py" config="./pyscript.toml"></script>
+    </section>
 </body>
 </html>
     
