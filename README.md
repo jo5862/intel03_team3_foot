@@ -13,7 +13,7 @@ heatmap,matplot, CNN-LSTM을 이용한 보행 정상 범위 확률 데이터를 
 ![schedule](images/schedule.png)
 
 ## 🧑‍🤝‍🧑 개발자 소개
-![team_member](images/team_member.png)
+![team_member](images/team_member.PNG)
 ## 📌 주요 기능
     - 걸음걸이 6단계를 구분한 14개의 압력센서 기기 2개를 이용해 왼발,오른발의  무게값을 히트맵화하여 무게중심(COP)점을 확인 및 관련 데이터 이동 궤적을 학습시켜 환자의 정상 유무를 판별.
     
