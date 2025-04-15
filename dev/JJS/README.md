@@ -26,9 +26,9 @@
 
 * `webui_backend.py`: 데이터 전처리, 시각화, AI 모델 예측 관련 백엔드 Python 코드
 * `webui_main.py`: Flask 웹 서버 실행 및 HTTP 요청 처리 코드
-* `webui_html.txt`: 웹 UI의 HTML 구조
-* `webui_style.css.txt`: 웹 UI의 스타일 정의 (CSS)
-* `webui_js.txt`: 웹 UI의 동적인 동작 처리 (JavaScript)
+* `webui_html`: 웹 UI의 HTML 구조
+* `webui_style.css`: 웹 UI의 스타일 정의 (CSS)
+* `webui_js`: 웹 UI의 동적인 동작 처리 (JavaScript)
 * `./data/raw/`: 원본 CSV 데이터 저장 디렉토리 (예시: `Work_정지민(M)_B(1997-03-17)_M(2025-03-26-14-54-03).csv`) [`webui_main.py`](webui_main.py)
 * `./data/spride/`: 분할된 스프라이드 단위 CSV 파일 저장 디렉토리 [`webui_backend.py`](webui_backend.py)
 * `./data/npy/`: AI 모델 학습을 위한 NumPy 배열 데이터 저장 디렉토리 [`webui_backend.py`](webui_backend.py)
@@ -83,11 +83,11 @@
 3.  **그래프 확인:**
     * "Show Graph" 섹션의 "Raw\_graph" 버튼을 클릭하여 원본 CSV 데이터의 평균 센서 값 변화 그래프를 확인합니다. 생성된 이미지는 `./data/raw_img/` 디렉토리에 저장됩니다. [`webui_main.py`](webui_main.py)
     * "Sprite\_Graph" 버튼을 클릭하여 분할된 스프라이드 CSV 데이터의 평균 센서 값 변화 그래프를 확인합니다. 생성된 이미지는 `./data/spride_img/` 디렉토리에 저장됩니다. [`webui_main.py`](webui_main.py)
-4.  **히트맵 확인:** "Heat Map" 섹션에서 히트맵 애니메이션을 확인할 수 있습니다. 애니메이션 컨트롤을 이용하여 재생/일시정지, 속도 조절, 순환 주기 선택 등이 가능합니다. 히트맵 이미지는 `./data/heatmap/` 디렉토리에 저장됩니다. [`webui_js.txt`](webui_js.txt)
-5.  **모델 예측:** "Load Model" 버튼을 클릭한 후 (현재는 파일 선택 기능 없음) 히트맵이 생성되면 자동으로 AI 모델이 예측을 수행하고 결과를 화면에 표시합니다. [`webui_backend.py`](webui_backend.py) "Button 4" 또는 "Button 5" 등의 버튼을 통해 개별 스프라이드에 대한 예측을 수행할 수도 있습니다 (구현에 따라 다름). [`webui_js.txt`](webui_js.txt)
-6.  **의료 기록 확인:** "Medical Record" 섹션의 "[image: Show Medical Record]" 버튼을 클릭하여 의료 기록 팝업을 확인합니다. [`webui_html.txt`](webui_html.txt), [`webui_js.txt`](webui_js.txt)
-7.  **Cycle 선택:** "Choose Cycle" 섹션에서 특정 보행 주기를 선택하여 해당 주기의 히트맵 애니메이션을 확인할 수 있습니다. [`webui_html.txt`](webui_html.txt), [`webui_js.txt`](webui_js.txt)
-8.  **Memo:** 텍스트 영역에 메모를 작성할 수 있습니다. [`webui_html.txt`](webui_html.txt)
+4.  **히트맵 확인:** "Heat Map" 섹션에서 히트맵 애니메이션을 확인할 수 있습니다. 애니메이션 컨트롤을 이용하여 재생/일시정지, 속도 조절, 순환 주기 선택 등이 가능합니다. 히트맵 이미지는 `./data/heatmap/` 디렉토리에 저장됩니다. [`webui_js`](webui_js)
+5.  **모델 예측:** "Load Model" 버튼을 클릭한 후 (현재는 파일 선택 기능 없음) 히트맵이 생성되면 자동으로 AI 모델이 예측을 수행하고 결과를 화면에 표시합니다. [`webui_backend.py`](webui_backend.py) "Button 4" 또는 "Button 5" 등의 버튼을 통해 개별 스프라이드에 대한 예측을 수행할 수도 있습니다 (구현에 따라 다름). [`webui_js`](webui_js)
+6.  **의료 기록 확인:** "Medical Record" 섹션의 "[image: Show Medical Record]" 버튼을 클릭하여 의료 기록 팝업을 확인합니다. [`webui_html.txt`](webui_html.txt), [`webui_js`](webui_js.txt)
+7.  **Cycle 선택:** "Choose Cycle" 섹션에서 특정 보행 주기를 선택하여 해당 주기의 히트맵 애니메이션을 확인할 수 있습니다. [`webui_html.txt`](webui_html.txt), [`webui_js`](webui_js.txt)
+8.  **Memo:** 텍스트 영역에 메모를 작성할 수 있습니다. [`webui_html`](webui_html)
 
 ## AI 모델
 
