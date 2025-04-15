@@ -13,14 +13,14 @@
     * 원시 CSV 데이터 전체에 대한 센서 값 변화를 선 그래프로 시각화합니다. [`webui_backend.py`](webui_backend.py)
     * 스프라이드 단위로 분할된 CSV 데이터에 대한 센서 값 변화를 선 그래프로 시각화합니다. [`webui_backend.py`](webui_backend.py)
     * 스프라이드 단위의 센서 데이터를 히트맵 이미지로 변환하여 보행 중 압력 분포를 시각적으로 표현합니다. [`webui_backend.py`](webui_backend.py)
-    * 생성된 히트맵 이미지를 웹 UI에서 애니메이션 형태로 확인할 수 있습니다. [`webui_js.txt`](webui_js.txt)
+    * 생성된 히트맵 이미지를 웹 UI에서 애니메이션 형태로 확인할 수 있습니다. [`webui_js`](webui_js)
 * **AI 모델 학습 및 예측:**
     * 스프라이드 단위의 CSV 데이터를 **AI 모델의 입력 형태(NumPy 배열)**로 전처리합니다. [`webui_backend.py`](webui_backend.py)
     * 학습된 RNN(Recurrent Neural Network) 모델을 이용하여 보행 패턴을 **'Normal'(정상) 또는 'Right\_weight'(오른쪽 편중)**으로 분류하고, 각 분류에 대한 확률 값을 출력합니다. [`webui_backend.py`](webui_backend.py)
 * **웹 UI 환경:**
     * Flask 프레임워크를 사용하여 웹 서버를 구축하고 사용자 인터페이스를 제공합니다. [`webui_main.py`](webui_main.py)
-    * 사용자는 웹 UI를 통해 CSV 데이터 파일을 로드, 데이터 분할, 그래프 및 히트맵 시각화, AI 모델 예측 등의 기능을 수행할 수 있습니다. [`webui_html.txt`](webui_html.txt), [`webui_js.txt`](webui_js.txt)
-    * 웹 UI는 환자 정보 표시, 의료 기록 조회, 히트맵 애니메이션 제어 등의 기능을 포함합니다. [`webui_html.txt`](webui_html.txt), [`webui_js.txt`](webui_js.txt)
+    * 사용자는 웹 UI를 통해 CSV 데이터 파일을 로드, 데이터 분할, 그래프 및 히트맵 시각화, AI 모델 예측 등의 기능을 수행할 수 있습니다. [`webui_html`](webui_html), [`webui_js`](webui_js)
+    * 웹 UI는 환자 정보 표시, 의료 기록 조회, 히트맵 애니메이션 제어 등의 기능을 포함합니다. [`webui_html`](webui_html), [`webui_js`](webui_js)
 
 ## 파일 구조
 
