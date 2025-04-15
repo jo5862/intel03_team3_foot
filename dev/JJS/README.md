@@ -69,7 +69,7 @@
     mkdir modelRNN
     ```
 3.  **학습된 AI 모델 파일 준비:** `./modelRNN/` 디렉토리에 학습된 AI 모델 파일 `model.h5`를 위치시킵니다.
-4.  **원본 CSV 데이터 준비:** 분석할 FSR 센서 CSV 데이터 파일을 `./data/raw/` 디렉토리에 저장합니다. 예시 파일명: `Work_정지민(M)_B(1997-03-17)_M(2025-03-26-14-54-03).csv`.
+4.  **원본 CSV 데이터 준비:** 분석할 FSR 센서 CSV 데이터 파일을 `./data/raw/` 디렉토리에 저장합니다. 예시 파일명: `Work_XXX(M)_B(1997-03-17)_M(2025-03-26-14-54-03).csv`.
 5.  **웹 UI 실행:** 프로젝트 루트 디렉토리에서 다음 명령어를 실행합니다.
     ```bash
     python webui_main.py
@@ -78,7 +78,7 @@
 
 ## 사용 방법
 
-1.  **데이터 로드:** 웹 페이지 좌측 상단의 "Load Data" 섹션에서 CSV 파일을 선택하고 로드합니다. 로드된 CSV 파일의 General Info가 화면에 표시됩니다. [`webui_js.txt`](webui_js.txt)
+1.  **데이터 로드:** 웹 페이지 좌측 상단의 "Load Data" 섹션에서 CSV 파일을 선택하고 로드합니다. 로드된 CSV 파일의 General Info가 화면에 표시됩니다. [`webui_js`](webui_js)
 2.  **CSV 분할:** "Split CSV" 버튼을 클릭하여 로드된 CSV 파일을 오른발 뒤꿈치 접지를 기준으로 스프라이드 단위로 분할합니다. 분할된 파일은 `./data/spride/` 디렉토리에 저장됩니다. [`webui_main.py`](webui_main.py)
 3.  **그래프 확인:**
     * "Show Graph" 섹션의 "Raw\_graph" 버튼을 클릭하여 원본 CSV 데이터의 평균 센서 값 변화 그래프를 확인합니다. 생성된 이미지는 `./data/raw_img/` 디렉토리에 저장됩니다. [`webui_main.py`](webui_main.py)
