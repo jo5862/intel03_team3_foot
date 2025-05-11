@@ -32,14 +32,7 @@ heatmap,matplot, CNN-LSTM을 이용한 보행 정상 범위 확률 데이터를 
 
 ![use_case](images/hld_1.png)
 
-- sequence diagram
-    
-    ![sequences_diagram](images/hld_2.png)
-    
-- class diagram
-    
-    ![class_diagram](images/hld_3.png)
-    
+
 
 ## Clone code
 
