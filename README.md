@@ -2,6 +2,9 @@
 
 대한상공회의소 경기인력개발원 [intel] 엣지 AI SW 아카데미 KDT훈련과정 최종 발표 프로젝트에서 FSR센서를 이용한 족저압 데이터 추출과 이를 이용한
 heatmap,matplot, CNN-LSTM을 이용한 보행 정상 범위 확률 데이터를 통해 의사가 환자에게 처방 및 물리 치료 안내를 해주게하는 HW 및 SW 제작프로젝트입니다.
+![hd](images/shoes.png)
+![ui](images/detect_01.gif)
+![web_ui](images/hld_1.png)
 
 ## 👨‍🏫프로젝트 소개
 - 딥러닝을 활용한 동적 족저압 기반 보행이상 검출
